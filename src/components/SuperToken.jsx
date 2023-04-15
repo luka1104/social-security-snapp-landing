@@ -19,6 +19,8 @@ import { FaCheckCircle } from "react-icons/fa"
 import Features from "./Features"
 import Header from "./Header"
 import Hero from "./Hero"
+import { useAccount, useConnect, useNetwork, useSwitchNetwork } from "wagmi"
+import { InjectedConnector } from "wagmi/connectors/injected"
 
 const options = [
   { id: 1, desc: "GPT3 API Unlimited Access" },
@@ -35,8 +37,6 @@ const options3 = [
   { id: 2, desc: "World Id unlimited Access" },
   { id: 3, desc: "Lens API unlimited Access" },
 ]
-
-let account
 
 async function approveTokens(amount) {
   const provider = new ethers.providers.Web3Provider(window.ethereum)
@@ -76,7 +76,7 @@ async function approveTokens(amount) {
   }
 }
 
-const PackageTier = ({ title, options, typePlan, checked = false }) => {
+const PackageTier = ({ title, options, typePlan, checked = false, loading, onClick }) => {
   {
     const colorTextLight = checked ? "white" : "purple.600"
     const bgColorLight = checked ? "purple.400" : "gray.300"
@@ -110,9 +110,11 @@ const PackageTier = ({ title, options, typePlan, checked = false }) => {
         <Heading size={"xl"}>{typePlan}</Heading>
         <Stack>
           <ChakraButton
+            isLoading={loading}
             size="md"
             color={useColorModeValue(colorTextLight, colorTextDark)}
             bgColor={useColorModeValue(bgColorLight, bgColorDark)}
+            onClick={onClick}
           >
             Get Started
           </ChakraButton>
@@ -125,76 +127,57 @@ const PackageTier = ({ title, options, typePlan, checked = false }) => {
 const SuperTokens = () => {
   const [approveAmount, setApproveAmount] = useState("")
   const [isApproveButtonLoading, setIsApproveButtonLoading] = useState(false)
+  const [isApproveButtonLoading2, setIsApproveButtonLoading2] = useState(false)
+  const [isApproveButtonLoading3, setIsApproveButtonLoading3] = useState(false)
   const [currentAccount, setCurrentAccount] = useState("")
+  const { address, isConnected } = useAccount()
+  const { connect } = useConnect({
+    connector: new InjectedConnector(),
+  })
+  const { chain } = useNetwork()
+  const { chains, error, isLoading, pendingChainId, switchNetwork } = useSwitchNetwork()
 
-  function ApproveButton({ isLoading, children, ...props }) {
-    return (
-      <Button variant="success" className="button" {...props}>
-        {isApproveButtonLoading ? <Spinner animation="border" /> : children}
-      </Button>
-    )
-  }
-
-  const handleApproveAmountChange = (e) => {
-    setApproveAmount(() => ([e.target.name] = e.target.value))
-  }
-
-  const connectWallet = async () => {
-    try {
-      const { ethereum } = window
-
-      if (!ethereum) {
-        alert("Get MetaMask!")
-        return
-      }
-      const accounts = await ethereum.request({
-        method: "eth_requestAccounts",
-      })
-      console.log("Connected", accounts[0])
-      setCurrentAccount(accounts[0])
-      account = currentAccount
-      // Setup listener! This is for the case where a user comes to our site
-      // and connected their wallet for the first time.
-      // setupEventListener()
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
-  const checkIfWalletIsConnected = async () => {
-    console.log("runs")
-    const { ethereum } = window
-
-    if (!ethereum) {
-      console.log("Make sure you have metamask!")
-      return
+  const checkWallet = async () => {
+    if (chain.id !== 5) {
+      await switchNetwork(5)
+      return true
     } else {
-      console.log("We have the ethereum object", ethereum)
-    }
-
-    const accounts = await window.ethereum.request({ method: "eth_accounts" })
-    const chain = await window.ethereum.request({ method: "eth_chainId" })
-    let chainId = chain
-    console.log("chain ID:", chain)
-    console.log("global Chain Id:", chainId)
-    if (accounts.length !== 0) {
-      account = accounts[0]
-      console.log("Found an authorized account:", account)
-      setCurrentAccount(account)
-      // Setup listener! This is for the case where a user comes to our site
-      // and ALREADY had their wallet connected + authorized.
-      // setupEventListener()
-    } else {
-      console.log("No authorized account found")
+      return true
     }
   }
 
-  useEffect(() => {
-    checkIfWalletIsConnected()
-  }, [])
+  const handleStarter = async () => {
+    if (!isConnected) return
+    if (checkWallet) {
+      setIsApproveButtonLoading(true)
+      const approveAmount = 15
+      await approveTokens(approveAmount)
+      setIsApproveButtonLoading(false)
+    }
+  }
+
+  const handlePlus = async () => {
+    if (!isConnected) return
+    if (checkWallet) {
+      setIsApproveButtonLoading2(true)
+      const approveAmount = 30
+      await approveTokens(approveAmount)
+      setIsApproveButtonLoading2(false)
+    }
+  }
+
+  const handlePro = async () => {
+    if (!isConnected) return
+    if (checkWallet) {
+      setIsApproveButtonLoading3(true)
+      const approveAmount = 60
+      await approveTokens(approveAmount)
+      setIsApproveButtonLoading3(false)
+    }
+  }
 
   return (
-    <div>
+    <>
       <Header />
       <Hero />
       <Divider />
@@ -227,14 +210,33 @@ const SuperTokens = () => {
             </Stack>
           </Stack>
           <Divider />
-          <PackageTier title={"Starter"} typePlan="$15.00" options={options} />
+          <PackageTier
+            title={"Starter"}
+            typePlan="$15.00"
+            options={options}
+            loading={isApproveButtonLoading}
+            onClick={handleStarter}
+          />
           <Divider />
-          <PackageTier title={"Security Plus"} checked={true} typePlan="$30.00" options={options2} />
+          <PackageTier
+            title={"Security Plus"}
+            checked={true}
+            typePlan="$30.00"
+            options={options2}
+            loading={isApproveButtonLoading2}
+            onClick={handlePlus}
+          />
           <Divider />
-          <PackageTier title={"Security Pro"} typePlan="$60.00" options={options3} />
+          <PackageTier
+            title={"Security Pro"}
+            typePlan="$60.00"
+            options={options3}
+            loading={isApproveButtonLoading3}
+            onClick={handlePro}
+          />
         </Stack>
       </Box>
-      <h2>Working with Super Tokens</h2>
+      {/* <h2>Working with Super Tokens</h2>
       {currentAccount === "" ? (
         <button id="connectWallet" className="button" onClick={connectWallet}>
           Connect Wallet
@@ -274,8 +276,8 @@ const SuperTokens = () => {
           <b> upgrade and approve </b>
           functions to see under the hood
         </p>
-      </div>
-    </div>
+      </div> */}
+    </>
   )
 }
 

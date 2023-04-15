@@ -18,6 +18,7 @@ import {
 import { FaCheckCircle } from "react-icons/fa"
 import Features from "./Features"
 import Header from "./Header"
+import Hero from "./Hero"
 
 const options = [
   { id: 1, desc: "1 lorem ipsum" },
@@ -185,6 +186,8 @@ const SuperTokens = () => {
   return (
     <div>
       <Header />
+      <Hero />
+      <Divider />
       <Features />
       <Divider />
       <Box py={6} px={5} min={"100vh"}>

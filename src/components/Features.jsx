@@ -1,4 +1,4 @@
-import { Box, SimpleGrid, Icon, Text, Stack, Flex } from "@chakra-ui/react"
+import { Box, SimpleGrid, Icon, Text, Stack, Flex, Heading, Center } from "@chakra-ui/react"
 import { FcAssistant, FcDonate, FcInTransit } from "react-icons/fc"
 
 const Feature = ({ title, text, icon }) => {
@@ -25,6 +25,11 @@ const Feature = ({ title, text, icon }) => {
 export default function Features() {
   return (
     <Box p={4}>
+      <Center mb="40px">
+        <Heading size={"xl"}>
+          <Text color="purple.400">Features</Text>
+        </Heading>
+      </Center>
       <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
         <Feature
           icon={<Icon as={FcAssistant} w={10} h={10} />}

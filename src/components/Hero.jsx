@@ -21,14 +21,16 @@ export default function Hero() {
       <Container maxW={"3xl"}>
         <Stack as={Box} textAlign={"center"} spacing={{ base: 8, md: 14 }} py={{ base: 20, md: 36 }}>
           <Heading fontWeight={600} fontSize={{ base: "2xl", sm: "4xl", md: "6xl" }} lineHeight={"110%"}>
-            Make money from <br />
+            No more Approval to
+            <br />
             <Text as={"span"} color={"green.400"}>
-              your audience
+              Spam Contracts
             </Text>
           </Heading>
           <Text color={"gray.500"}>
-            Monetize your content by charging your most loyal readers and reward them loyalty points. Give back
-            to your loyal readers by granting them access to your pre-releases and sneak-peaks.
+            MetaMask Snap enhances security through: 1) Lens Protocol integration, displaying contract
+            interactions by followed users to flag potential spam 2) GPT-4 reviewing transaction methods,
+            highlighting risks 3) Worldcoin KYC authentication. Prevent accidental spam
           </Text>
           <Stack direction={"column"} spacing={3} align={"center"} alignSelf={"center"} position={"relative"}>
             <Button

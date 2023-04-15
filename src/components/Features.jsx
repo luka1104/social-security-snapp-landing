@@ -1,4 +1,4 @@
-import { Box, SimpleGrid, Icon, Text, Stack, Flex, Heading, Center } from "@chakra-ui/react"
+import { Box, SimpleGrid, Icon, Text, Stack, Flex, Heading, Center, Image } from "@chakra-ui/react"
 import { FcAssistant, FcDonate, FcInTransit } from "react-icons/fc"
 
 const Feature = ({ title, text, icon }) => {
@@ -32,19 +32,19 @@ export default function Features() {
       </Center>
       <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
         <Feature
-          icon={<Icon as={FcAssistant} w={10} h={10} />}
+          icon={<Image src="images/lens.png" />}
           title={"Lens Protocol"}
           text={
             "Lens Protocol integration, displaying contract interactions by followed users to flag potential spam"
           }
         />
         <Feature
-          icon={<Icon as={FcDonate} w={10} h={10} />}
+          icon={<Image src="images/gpt.jpeg" borderRadius={100} />}
           title={"GPT-4 API"}
           text={"GPT-4 reviewing transaction methods, highlighting risks"}
         />
         <Feature
-          icon={<Icon as={FcInTransit} w={10} h={10} />}
+          icon={<Image src="images/worldcoin.png" />}
           title={"World ID"}
           text={"World ID KYC authentication. Prevent accidental spam"}
         />

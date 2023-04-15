@@ -9,6 +9,7 @@ import {
   Icon,
   useColorModeValue,
   createIcon,
+  Image,
 } from "@chakra-ui/react"
 import { FiExternalLink } from "react-icons/fi"
 

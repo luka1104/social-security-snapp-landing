@@ -15,6 +15,8 @@ import {
   Stack,
   useColorMode,
   Center,
+  Heading,
+  Image,
 } from "@chakra-ui/react"
 import { MoonIcon, SunIcon } from "@chakra-ui/icons"
 import { BiWallet } from "react-icons/bi"
@@ -55,7 +57,10 @@ export default function Header() {
     <>
       <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
-          <Box>SocialSecuritySnapp</Box>
+          <Flex alignItems={"center"}>
+            <Image src="/images/SocialSecuritySnap.png" h="64px" />
+            <Heading fontSize={"2xl"}>SocialSecuritySnapp</Heading>
+          </Flex>
 
           <Flex alignItems={"center"}>
             <Stack direction={"row"} spacing={7}>

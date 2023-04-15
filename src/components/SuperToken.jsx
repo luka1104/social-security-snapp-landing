@@ -217,11 +217,11 @@ const SuperTokens = () => {
             </Stack>
           </Stack>
           <Divider />
-          <PackageTier title={"Starter"} typePlan="Free" options={options} />
+          <PackageTier title={"Starter"} typePlan="$15.00" options={options} />
           <Divider />
-          <PackageTier title={"Lorem Plus"} checked={true} typePlan="$32.00" options={options} />
+          <PackageTier title={"Security Plus"} checked={true} typePlan="$50.00" options={options} />
           <Divider />
-          <PackageTier title={"Lorem Pro"} typePlan="$50.00" options={options} />
+          <PackageTier title={"Security Pro"} typePlan="$100.00" options={options} />
         </Stack>
       </Box>
       <h2>Working with Super Tokens</h2>

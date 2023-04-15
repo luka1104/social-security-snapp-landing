@@ -10,6 +10,7 @@ import {
   useColorModeValue,
   createIcon,
 } from "@chakra-ui/react"
+import { FiExternalLink } from "react-icons/fi"
 
 export default function Hero() {
   return (
@@ -23,7 +24,7 @@ export default function Hero() {
           <Heading fontWeight={600} fontSize={{ base: "2xl", sm: "4xl", md: "6xl" }} lineHeight={"110%"}>
             No more Approval to
             <br />
-            <Text as={"span"} color={"green.400"}>
+            <Text as={"span"} color="purple.400">
               Spam Contracts
             </Text>
           </Heading>
@@ -34,18 +35,16 @@ export default function Hero() {
           </Text>
           <Stack direction={"column"} spacing={3} align={"center"} alignSelf={"center"} position={"relative"}>
             <Button
-              colorScheme={"green"}
-              bg={"green.400"}
+              colorScheme={"purple"}
+              bg={"purple.400"}
               rounded={"full"}
               px={6}
               _hover={{
-                bg: "green.500",
+                bg: "purple.500",
               }}
+              rightIcon={<Icon as={FiExternalLink} w={4} h={4} />}
             >
-              Get Started
-            </Button>
-            <Button variant={"link"} colorScheme={"blue"} size={"sm"}>
-              Learn more
+              Open App
             </Button>
             <Box>
               <Icon

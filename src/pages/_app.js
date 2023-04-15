@@ -1,12 +1,19 @@
 import * as React from "react"
-
-// 1. import `ChakraProvider` component
+import { WagmiConfig, createClient } from "wagmi"
+import { getDefaultProvider } from "ethers"
 import { ChakraProvider } from "@chakra-ui/react"
 
 export default function App({ Component, pageProps }) {
+  const client = createClient({
+    autoConnect: true,
+    provider: getDefaultProvider(),
+  })
+
   return (
     <ChakraProvider>
-      <Component {...pageProps} />
+      <WagmiConfig client={client}>
+        <Component {...pageProps} />
+      </WagmiConfig>
     </ChakraProvider>
   )
 }

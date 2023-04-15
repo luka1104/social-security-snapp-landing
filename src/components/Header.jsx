@@ -17,6 +17,7 @@ import {
   Center,
 } from "@chakra-ui/react"
 import { MoonIcon, SunIcon } from "@chakra-ui/icons"
+import { useAccount, useConnect, useDisconnect } from "wagmi"
 
 const NavLink = ({ children }) => (
   <Link
@@ -36,6 +37,12 @@ const NavLink = ({ children }) => (
 export default function Header() {
   const { colorMode, toggleColorMode } = useColorMode()
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const { address, isConnected } = useAccount()
+  const { connect } = useConnect({
+    connector: new InjectedConnector(),
+  })
+  const { disconnect } = useDisconnect()
+
   return (
     <>
       <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>

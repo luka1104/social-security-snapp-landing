@@ -21,6 +21,7 @@ import Header from "./Header"
 import Hero from "./Hero"
 import { useAccount, useConnect, useNetwork, useSwitchNetwork } from "wagmi"
 import { InjectedConnector } from "wagmi/connectors/injected"
+import { useRouter } from "next/router"
 
 const options = [
   { id: 1, desc: "GPT3 API Unlimited Access" },
@@ -137,13 +138,20 @@ const SuperTokens = () => {
   const { chain } = useNetwork()
   const { chains, error, isLoading, pendingChainId, switchNetwork } = useSwitchNetwork()
 
+  const router = useRouter()
+
   const handleStarter = async () => {
     if (!isConnected) return
 
     setIsApproveButtonLoading(true)
     const approveAmount = 15
     await approveTokens(approveAmount)
-    setIsApproveButtonLoading(false)
+    setTimeout(() => {
+      setIsApproveButtonLoading(false)
+      router.push(
+        `https://eth-tokyo-social-security-snap-site.vercel.app?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhMTVlNjc0Mi03YjcwLTQwYTQtOWUxZS1mZmQ0NWU1OTk5MWIiLCJpYXQiOjE2ODE1MjcyNjAsImV4cCI6MTY4MjEzMjA2MH0.SC3usBywx0YLMoBvQ0A2bAM_WCVNar2TynTpw6hhcSM`,
+      )
+    }, 10000)
   }
 
   const handlePlus = async () => {
@@ -152,7 +160,12 @@ const SuperTokens = () => {
     setIsApproveButtonLoading2(true)
     const approveAmount = 30
     await approveTokens(approveAmount)
-    setIsApproveButtonLoading2(false)
+    setTimeout(() => {
+      setIsApproveButtonLoading2(false)
+      router.push(
+        `https://eth-tokyo-social-security-snap-site.vercel.app?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhMTVlNjc0Mi03YjcwLTQwYTQtOWUxZS1mZmQ0NWU1OTk5MWIiLCJpYXQiOjE2ODE1MjcyNjAsImV4cCI6MTY4MjEzMjA2MH0.SC3usBywx0YLMoBvQ0A2bAM_WCVNar2TynTpw6hhcSM`,
+      )
+    }, 10000)
   }
 
   const handlePro = async () => {
@@ -161,7 +174,12 @@ const SuperTokens = () => {
     setIsApproveButtonLoading3(true)
     const approveAmount = 60
     await approveTokens(approveAmount)
-    setIsApproveButtonLoading3(false)
+    setTimeout(() => {
+      setIsApproveButtonLoading3(false)
+      router.push(
+        `https://eth-tokyo-social-security-snap-site.vercel.app?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhMTVlNjc0Mi03YjcwLTQwYTQtOWUxZS1mZmQ0NWU1OTk5MWIiLCJpYXQiOjE2ODE1MjcyNjAsImV4cCI6MTY4MjEzMjA2MH0.SC3usBywx0YLMoBvQ0A2bAM_WCVNar2TynTpw6hhcSM`,
+      )
+    }, 10000)
   }
 
   return (

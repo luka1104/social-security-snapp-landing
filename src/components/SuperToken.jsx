@@ -17,6 +17,7 @@ import {
 } from "@chakra-ui/react"
 import { FaCheckCircle } from "react-icons/fa"
 import Features from "./Features"
+import Header from "./Header"
 
 const options = [
   { id: 1, desc: "1 lorem ipsum" },
@@ -183,6 +184,7 @@ const SuperTokens = () => {
 
   return (
     <div>
+      <Header />
       <Features />
       <Divider />
       <Box py={6} px={5} min={"100vh"}>

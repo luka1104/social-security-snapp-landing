@@ -137,43 +137,31 @@ const SuperTokens = () => {
   const { chain } = useNetwork()
   const { chains, error, isLoading, pendingChainId, switchNetwork } = useSwitchNetwork()
 
-  const checkWallet = async () => {
-    if (chain.id !== 5) {
-      await switchNetwork(5)
-      return true
-    } else {
-      return true
-    }
-  }
-
   const handleStarter = async () => {
     if (!isConnected) return
-    if (checkWallet) {
-      setIsApproveButtonLoading(true)
-      const approveAmount = 15
-      await approveTokens(approveAmount)
-      setIsApproveButtonLoading(false)
-    }
+
+    setIsApproveButtonLoading(true)
+    const approveAmount = 15
+    await approveTokens(approveAmount)
+    setIsApproveButtonLoading(false)
   }
 
   const handlePlus = async () => {
     if (!isConnected) return
-    if (checkWallet) {
-      setIsApproveButtonLoading2(true)
-      const approveAmount = 30
-      await approveTokens(approveAmount)
-      setIsApproveButtonLoading2(false)
-    }
+
+    setIsApproveButtonLoading2(true)
+    const approveAmount = 30
+    await approveTokens(approveAmount)
+    setIsApproveButtonLoading2(false)
   }
 
   const handlePro = async () => {
     if (!isConnected) return
-    if (checkWallet) {
-      setIsApproveButtonLoading3(true)
-      const approveAmount = 60
-      await approveTokens(approveAmount)
-      setIsApproveButtonLoading3(false)
-    }
+
+    setIsApproveButtonLoading3(true)
+    const approveAmount = 60
+    await approveTokens(approveAmount)
+    setIsApproveButtonLoading3(false)
   }
 
   return (

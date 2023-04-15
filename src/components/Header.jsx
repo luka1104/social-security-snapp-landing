@@ -59,7 +59,7 @@ export default function Header() {
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <Flex alignItems={"center"}>
             <Image src="/images/SocialSecuritySnap.png" h="64px" />
-            <Heading fontSize={"2xl"}>SocialSecuritySnapp</Heading>
+            <Heading fontSize={"2xl"}>SocialSecuritySnap</Heading>
           </Flex>
 
           <Flex alignItems={"center"}>

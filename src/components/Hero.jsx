@@ -44,7 +44,7 @@ export default function Hero() {
               }}
               rightIcon={<Icon as={FiExternalLink} w={4} h={4} />}
             >
-              Open App
+              Launch App
             </Button>
             <Box>
               <Icon

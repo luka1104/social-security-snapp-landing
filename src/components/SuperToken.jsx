@@ -21,9 +21,19 @@ import Header from "./Header"
 import Hero from "./Hero"
 
 const options = [
-  { id: 1, desc: "1 lorem ipsum" },
-  { id: 2, desc: "Lorem, ipsum dolor." },
-  { id: 3, desc: "Monthly Updates" },
+  { id: 1, desc: "GPT3 API Unlimited Access" },
+  { id: 2, desc: "World Id limited Access * 1000 calls per month" },
+  { id: 3, desc: "Lens API limited Access * 1000 calls per month" },
+]
+const options2 = [
+  { id: 1, desc: "GPT4 API limited Access * 100 calls per month" },
+  { id: 2, desc: "World Id unlimited Access" },
+  { id: 3, desc: "Lens API limited Access * 1000 calls per month" },
+]
+const options3 = [
+  { id: 1, desc: "GPT4 API Unlimited Access" },
+  { id: 2, desc: "World Id unlimited Access" },
+  { id: 3, desc: "Lens API unlimited Access" },
 ]
 
 let account
@@ -219,9 +229,9 @@ const SuperTokens = () => {
           <Divider />
           <PackageTier title={"Starter"} typePlan="$15.00" options={options} />
           <Divider />
-          <PackageTier title={"Security Plus"} checked={true} typePlan="$50.00" options={options} />
+          <PackageTier title={"Security Plus"} checked={true} typePlan="$30.00" options={options2} />
           <Divider />
-          <PackageTier title={"Security Pro"} typePlan="$100.00" options={options} />
+          <PackageTier title={"Security Pro"} typePlan="$60.00" options={options3} />
         </Stack>
       </Box>
       <h2>Working with Super Tokens</h2>

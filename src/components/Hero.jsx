@@ -12,8 +12,10 @@ import {
   Image,
 } from "@chakra-ui/react"
 import { FiExternalLink } from "react-icons/fi"
+import { useRouter } from "next/router"
 
 export default function Hero() {
+  const router = useRouter()
   return (
     <>
       <Head>
@@ -36,6 +38,9 @@ export default function Hero() {
           </Text>
           <Stack direction={"column"} spacing={3} align={"center"} alignSelf={"center"} position={"relative"}>
             <Button
+              as={"a"}
+              href="https://eth-tokyo-social-security-snap-site.vercel.app/"
+              target={"_blank"}
               colorScheme={"purple"}
               bg={"purple.400"}
               rounded={"full"}
